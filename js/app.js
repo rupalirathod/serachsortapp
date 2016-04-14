@@ -1,12 +1,19 @@
 var app = angular.module('searchApp', []);
 app.controller('UsersController', function($scope){
-	$scope.search = {};
+	$scope.search = "";
 	$scope.selectedUser = null;
 	$scope.selectedIndex = null;
 	$scope.selectUser = function(user, index){
 		$scope.selectedUser = user;
 		$scope.selectedIndex = index;
 	};
+	$scope.sensitiveSearch = function(user){
+		if($scope.search){
+			return user.name.indexOf($scope.search) == 0 ||
+			       user.email.indexOf($scope.search) == 0
+		}
+		return true;
+	}
 	$scope.users = [
 		{
 			"name": "Gregory Huffman",

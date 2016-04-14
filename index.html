@@ -23,7 +23,7 @@
 				<form class="form-inline well well-sm">
 					<span class="glyphicon glyphicon-search"></span>
 					<div class="form-group">
-						<input type="text" class="form-control" id="" ng-model="search.$" placeholder="Serach By User" />
+						<input type="text" class="form-control" id="name" ng-model="search" placeholder="Serach By User" />
 					</div>
 				</form>
 			</div>
@@ -40,7 +40,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="user in users | filter:search" 
+						<tr ng-repeat="user in users | filter:sensitiveSearch" 
 						    ng-style="{'background-color': $index == selectedIndex ? 'lightgray' : ''}"
 						    ng-click="selectUser(user, $index)">
 							<td>{{ $index }}</td>
