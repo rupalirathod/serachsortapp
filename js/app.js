@@ -1,6 +1,7 @@
 var app = angular.module('searchApp', []);
 app.controller('UsersController', function($scope){
 	$scope.search = "";
+	$scope.order = "email";
 	$scope.selectedUser = null;
 	$scope.selectedIndex = null;
 	$scope.selectUser = function(user, index){
@@ -14,6 +15,7 @@ app.controller('UsersController', function($scope){
 		}
 		return true;
 	}
+	
 	$scope.users = [
 		{
 			"name": "Gregory Huffman",
