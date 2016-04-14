@@ -19,6 +19,16 @@
 	</nav>
 	<section class="container main-content" ng-controller="UsersController">
 		<div class="row">
+			<div class="col-md-12">
+				<form class="form-inline well well-sm">
+					<span class="glyphicon glyphicon-search"></span>
+					<div class="form-group">
+						<input type="text" class="form-control" id="" ng-model="search.$" placeholder="Serach By User" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-8">
 				<table class="table table-bordered">
 					<thead>
@@ -30,7 +40,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="user in users" 
+						<tr ng-repeat="user in users | filter:search" 
 						    ng-style="{'background-color': $index == selectedIndex ? 'lightgray' : ''}"
 						    ng-click="selectUser(user, $index)">
 							<td>{{ $index }}</td>
@@ -65,7 +75,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</section>
 
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>

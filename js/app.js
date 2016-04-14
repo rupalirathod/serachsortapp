@@ -1,5 +1,6 @@
 var app = angular.module('searchApp', []);
 app.controller('UsersController', function($scope){
+	$scope.search = {};
 	$scope.selectedUser = null;
 	$scope.selectedIndex = null;
 	$scope.selectUser = function(user, index){
