@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="searchApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Search and Sort Application</title>
+	<link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">
+					List of Things
+				</a>
+			</div>
+		</div>
+	</nav>
+	<section class="container main-content" ng-controller="UsersController">
+		<div class="row">
+			<div class="col-md-8">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Birthday</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users" 
+						    ng-style="{'background-color': $index == selectedIndex ? 'lightgray' : ''}"
+						    ng-click="selectUser(user, $index)">
+							<td>{{ $index }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.birthdate | date: longDate }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">Details</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Name</dt>
+							<dd>{{ selectedUser.name }}</dd>
+							<dt>Email</dt>
+							<dd>{{ selectedUser.email }}</dd>
+							<dt>Birth Date</dt>
+							<dd>{{ selectedUser.birthdate | date: "longDate" }}</dd>
+							<dt>Phone Number</dt>
+							<dd>{{ selectedUser.phonenumber }}</dd>
+							<dt>Address</dt>
+							<dd>{{ selectedUser.address }}</dd>
+							<dt>City</dt>
+							<dd>{{ selectedUser.city }}</dd>
+							<dt>Country</dt>
+							<dd>{{ selectedUser.country }}</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
