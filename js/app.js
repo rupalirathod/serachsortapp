@@ -3,10 +3,8 @@ app.controller('UsersController', function($scope){
 	$scope.search = "";
 	$scope.order = "email";
 	$scope.selectedUser = null;
-	$scope.selectedIndex = null;
-	$scope.selectUser = function(user, index){
+	$scope.selectUser = function(user){
 		$scope.selectedUser = user;
-		$scope.selectedIndex = index;
 	};
 	$scope.sensitiveSearch = function(user){
 		if($scope.search){

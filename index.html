@@ -55,13 +55,22 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="user in users | filter:sensitiveSearch | orderBy:order" 
-						    ng-style="{'background-color': $index == selectedIndex ? 'lightgray' : ''}"
-						    ng-click="selectUser(user, $index)">
+						<tr ng-repeat="user in filterUsers = (users | filter:sensitiveSearch | orderBy:order)" 
+						    ng-style="{'background-color': user.email == selectedUser.email ? 'lightgray' : ''}"
+						    ng-click="selectUser(user)">
 							<td>{{ $index }}</td>
 							<td>{{ user.name }}</td>
 							<td>{{ user.email }}</td>
 							<td>{{ user.birthdate | date: longDate }}</td>
+						</tr>
+						<tr ng-show="filterUsers.length == 0">
+							<td colspan="4">
+								<div class="alert alert-info">
+									<p class="text-center">
+										No results found for the search term '{{ search }}'
+									</p>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
